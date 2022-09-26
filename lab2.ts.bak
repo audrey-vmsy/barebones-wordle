@@ -45,7 +45,7 @@ if (contentDiv !== null){
 				
 				contentDiv.replaceChildren(...elements2);
 				
-				const guessesLeft : number = 6;
+				let guessesLeft : number = 6;
 				
 				guessBox.addEventListener('keypress', (k) => {
 					if (k.key === 'Enter'){
@@ -57,7 +57,32 @@ if (contentDiv !== null){
 							
 							const guessed = document.createElement("p");
 							guessed.textContent = recentGuess;
-							contentDiv.appendChild(guessed);
+							
+							let newGuessed: HTMLElement[] = [];
+							let guessedArr: string[] = guessed.textContent.split("");
+							let toGuessArr: string[] = toGuess.split("");
+							for (let g = 0; g < 5; g++){
+								if (guessedArr[g] == toGuessArr[g]){
+									const letter = document.createElement("span");
+									letter.classList.add("correct")
+									letter.textContent = guessedArr[g];
+									newGuessed.push(letter);
+								} else if (toGuess.indexOf(guessedArr[g]) !== -1){
+									const letter = document.createElement("span");
+									letter.classList.add("misplaced");
+									letter.textContent = guessedArr[g];
+									newGuessed.push(letter);
+								} else {
+									const letter = document.createElement("span");
+									//letter.classList.add("incorrect");
+									letter.textContent = guessedArr[g];
+									newGuessed.push(letter);
+								}
+							}
+							
+							elements2.push(...newGuessed);
+							elements2.push(document.createElement("br"));
+							contentDiv.replaceChildren(...elements2);
 							
 							if (recentGuess === toGuess){
 								alert("Player guessed correctly!");
@@ -66,8 +91,7 @@ if (contentDiv !== null){
 								alert("Game over!");
 								guessBox.disabled = true;
 							} else {
-								guessesLeft = guessesLeft-1;
-								console.log(guessesLeft);
+								guessesLeft--;
 							}
 						}
 					}

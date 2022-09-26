@@ -43,7 +43,32 @@ if (contentDiv !== null) {
                             guessBox.value = "";
                             const guessed = document.createElement("p");
                             guessed.textContent = recentGuess;
-                            contentDiv.appendChild(guessed);
+                            let newGuessed = [];
+                            let guessedArr = guessed.textContent.split("");
+                            let toGuessArr = toGuess.split("");
+                            for (let g = 0; g < 5; g++) {
+                                if (guessedArr[g] == toGuessArr[g]) {
+                                    const letter = document.createElement("span");
+                                    letter.classList.add("correct");
+                                    letter.textContent = guessedArr[g];
+                                    newGuessed.push(letter);
+                                }
+                                else if (toGuess.indexOf(guessedArr[g]) !== -1) {
+                                    const letter = document.createElement("span");
+                                    letter.classList.add("misplaced");
+                                    letter.textContent = guessedArr[g];
+                                    newGuessed.push(letter);
+                                }
+                                else {
+                                    const letter = document.createElement("span");
+                                    letter.classList.add("incorrect");
+                                    letter.textContent = guessedArr[g];
+                                    newGuessed.push(letter);
+                                }
+                            }
+                            elements2.push(...newGuessed);
+                            elements2.push(document.createElement("br"));
+                            contentDiv.replaceChildren(...elements2);
                             if (recentGuess === toGuess) {
                                 alert("Player guessed correctly!");
                                 guessBox.disabled = true;
@@ -53,8 +78,7 @@ if (contentDiv !== null) {
                                 guessBox.disabled = true;
                             }
                             else {
-                                guessesLeft = guessesLeft - 1;
-                                console.log(guessesLeft);
+                                guessesLeft--;
                             }
                         }
                     }
