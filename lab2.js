@@ -1,5 +1,4 @@
 "use strict";
-// start of Checkpoint 1
 const contentDiv = document.getElementById("content");
 if (contentDiv !== null) {
     let elements1 = [];
@@ -22,8 +21,6 @@ if (contentDiv !== null) {
                 const randomIndex = Math.floor(Math.random() * words.length);
                 const toGuess = words[randomIndex];
                 console.log(toGuess);
-                // end of Checkpoint 1
-                // start of Checkpoint 2
                 let elements2 = [];
                 const guessBox = document.createElement("input");
                 guessBox.setAttribute("type", "text");

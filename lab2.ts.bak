@@ -29,10 +29,6 @@ if (contentDiv !== null){
 				const toGuess : string = words[randomIndex];
 				console.log(toGuess);
 				
-				// end of Checkpoint 1
-				
-				
-				// start of Checkpoint 2
 				let elements2: HTMLElement[] = [];
 				
 				const guessBox = document.createElement("input");
@@ -74,7 +70,7 @@ if (contentDiv !== null){
 									newGuessed.push(letter);
 								} else {
 									const letter = document.createElement("span");
-									//letter.classList.add("incorrect");
+									letter.classList.add("incorrect");
 									letter.textContent = guessedArr[g];
 									newGuessed.push(letter);
 								}

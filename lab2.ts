@@ -1,4 +1,3 @@
-// start of Checkpoint 1
 const contentDiv = document.getElementById("content");
 
 if (contentDiv !== null){
@@ -29,10 +28,6 @@ if (contentDiv !== null){
 				const toGuess : string = words[randomIndex];
 				console.log(toGuess);
 				
-				// end of Checkpoint 1
-				
-				
-				// start of Checkpoint 2
 				let elements2: HTMLElement[] = [];
 				
 				const guessBox = document.createElement("input");
