@@ -7,5 +7,5 @@
 }
 
 .incorrect {
-  color: black;
+  color: red;
 }
