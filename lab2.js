@@ -91,7 +91,7 @@ if (contentDiv !== null) {
                             }
                             else if (guessesLeft === 1) {
                                 // If guess is incorrect, and no more valid guesses left
-                                alert("Game over!");
+                                alert("Game over! Correct answer was: " + toGuess.toUpperCase());
                                 guessBox.disabled = true;
                             }
                             else {
